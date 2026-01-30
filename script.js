@@ -20,12 +20,12 @@
 // TODO: Select the following three elements from the HTML:
 //   1. The text input box (id="user-input")
 //   2. The output div where correct answers appear (id="quiz-outputs")
-//   3. The status message area (id="status")
+//   3. The status message area (id="status") 
 // --------------------------------------------
 
-const textBox = 
-const outputBox = 
-const statusBox = 
+const textBox = document.querySelector("#user-input");
+const outputBox = document.querySelector("#quiz-outputs");
+const statusBox = document.querySelector("#status");
 
 // This console.log helps us verify our selections worked correctly.
 // Open the browser's Developer Tools (F12) to see the output.
@@ -60,6 +60,7 @@ let pluto = false;
 // --------------------------------------------
 
 const checkAnswer = () => {
+  const currentAnswer = textBox.value;
   // Get the current value from the text input
   
 
@@ -71,27 +72,36 @@ const checkAnswer = () => {
   //   - Display an error message in the statusBox
 
   if (currentAnswer === "Mercury") {
-
+    outputBox.innerHTML += `<h3>Mercury</h3><p>Mercury is the smallest and innermost planet in the Solar System.</p>`;
+    score++;
   } else if (currentAnswer === "Venus") {
-
+    outputBox.innerHTML += `<h3>Venus</h3><p>Venus is the hottest planet in our solar system.</p>`;
+    score++;
   } else if (currentAnswer === "Earth") {
-
+    outputBox.innerHTML += `<h3>Earth</h3><p>Earth is the only known planet to support life.</p>`;
+    score++;
   } else if (currentAnswer === "Mars") {
-
+    outputBox.innerHTML += `<h3>Mars</h3><p>Mars is known as the Red Planet.</p>`;
+    score++;
   } else if (currentAnswer === "Jupiter") {
-
+    outputBox.innerHTML += `<h3>Jupiter</h3><p>Jupiter is the largest planet in our solar system.</p>`;
+    score++;
   } else if (currentAnswer === "Saturn") {
-
+    outputBox.innerHTML += `<h3>Saturn</h3><p>Saturn is known for its prominent ring system.</p>`;
+    score++;
   } else if (currentAnswer === "Uranus") {
-
+    outputBox.innerHTML += `<h3>Uranus</h3><p>Uranus is an ice giant with a blue-green color.</p>`;
+    score++;
   } else if (currentAnswer === "Neptune") {
-
+    outputBox.innerHTML += `<h3>Neptune</h3><p>Neptune is the farthest known planet from the Sun.</p>`;
+    score++;
   } else if (currentAnswer === "Pluto") {
     // Secret bonus answer - Pluto was reclassified as a dwarf planet in 2006
-  
+    outputBox.innerHTML += `<h3>Pluto</h3><p>Pluto is a dwarf planet in the outer Solar System.</p>`;
+    pluto = true;
   } else {
     // If no conditions match, show an error message
-  
+    statusBox.innerHTML = "That's not a planet!";
   }
 
   // After checking the answer, verify if the game is complete
@@ -141,4 +151,8 @@ const checkScore = () => {
 //   - Listens for the "change" event
 //   - Calls the checkAnswer function when triggered
 // --------------------------------------------
+textBox.addEventListener("change", checkAnswer);
+
+listener("change", checkAnswer);
+textBox.addEventListener("change", checkAnswer);
 
